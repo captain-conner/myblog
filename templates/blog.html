@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load staticfiles %}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Captain&amp;Conner - Blog</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+
+	<script type="text/javascript">
+	function equalHeight(group) {
+		tallest = 0;
+		group.each(function() {
+			thisHeight = $(this).height();
+			if(thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.height(tallest);
+	}
+	$(document).ready(function() {
+		equalHeight($(".column"));
+	});
+	</script>
+
+
+</head>
+
+<body>
+<div id="wrapper">
+
+
+	<div id="header"><!-- Start Header -->
+
+		<a href="index.html"><img id="logo" src="{% static "img/logo.png" %}" alt="Taylor&amp;Smith" /></a>
+
+		<span id="number"></span>
+
+	</div><!-- End Header -->
+
+	<ul id="nav"><!-- Navigation -->
+		<li><a href="/">首頁</a></li>
+		<li><a href="/logentry/">Log Entry</a></li>
+		<li><a href="/blog/">blog</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/contact/">留言</a></li>
+	</ul>
+
+	<div class="column" id="content"><!-- Start Content -->
+
+		<h1>Blogs</h1>
+		<hr style="height:1px;border:none;border-top:1px solid #555555;" />
+		<!-- 博文的节选 默认为5篇,可以适当调整 -->
+		{%if articles %}
+		{% for s in articles %}
+				<a href="?id={{s.id}}"><h2>{{s.title}}</h2></a>
+				{% autoescape off %}
+						{{s.content}}
+				{% endautoescape %}
+				<br>
+				<i class="publish_time">{{s.date_publish|date:'Y-m-d'}}</i>
+				<hr style="height:1px;border:none;border-top:1px solid #555555;" />
+		{% endfor %}
+		{% endif %}
+	</div><!-- End Content -->
+
+
+	<div class="column" id="sidebar"><!-- Start Sidebar -->
+
+		<h2>划木类</h2>
+		<ul>
+			<li><a href="https://www.zhihu.com/people/yu-xiao-xi-51/activities">知乎<br /></a></li>
+			<li><a href="http://weibo.com/u/2325354970">WeiBo</a></li>
+			<li><a href="http://blog.sina.com.cn/u/2325354970">SinaBlog<br /></a></li>
+		</ul>
+
+		<h2>最近文章</h2>
+		{%if articles %}
+
+		<ul>
+			{% for s in articles %}
+				<li><a href="/blog/detail/{{s.id}}/">{{s.title}}<br /><i>{{s.date_publish|date:'Y-m-d'}}</i></a></li>
+			{% endfor %}
+		</ul>
+
+		{% endif %}
+
+		<h2>类别</h2>
+		<ul>
+			<!-- 跳转的时候还是用get传递参数 -->
+			{% if categorys %}
+				{% for category in categorys%}
+					<li><a href="?cat={{category.name}}">{{category.name}}</a></li>
+				{% endfor %}
+			{% endif %}
+
+		</ul>
+
+		<h2>Archives</h2>
+		<ul>
+			<!-- 字典的操作 -->
+			{% for key,value in archives.items %}
+				<li>
+					<a href="?archive={{key}}">
+						{{key}}
+						{% if value > 0 %}
+							({{value}})
+						{% endif %}
+					</a>
+				</li>
+			{% endfor %}
+
+		</ul>
+
+	</div><!-- End Sidebar -->
+
+	<!-- 分页的实现 -->
+	<div class="pagination">
+		<ul class="pagefilter">
+			<!--上一页 -->
+			{% if articles.has_previous %}
+				<li><a href="?page={{articles.previous_page_number}}&archive={{archives_date}}&cat={{cate}}" >上一页</a></li>
+			{% else %}
+				<li>上一页</li>
+			{% endif %}
+
+			<!-- 当前页面 -->
+			<li>{{articles.number}}/{{paginator.num_pages}}</li>
+			<!-- 下一页 -->
+			{% if articles.has_next %}
+			<!-- 这里可以设置page的信息用于get -->
+				<li><a href="?page={{articles.next_page_number}}&archive={{archives_date}}&cat={{cate}}" >下一页</a></li>
+			{% else %}
+				<li>下一页</li>
+			{% endif %}
+		</ul>
+	</div>
+	<div id="footer">
+
+		<p>Copyright &copy; <b>Sean&amp;Conner</b> | <a href="http://blog.sina.com.cn/u/2325354970">SinaBolg</a></p>
+
+	</div><!-- End Footer -->
+</body>
+
+</html>

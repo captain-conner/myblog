@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+html	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^<html>$/;"	function	line:2
+head	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^<head>$/;"	function	line:4
+style	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <style media="screen">$/;"	function	line:7
+meta	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <meta charset="utf-8" name="viewport" content="width=device-width" user-scalable="no">$/;"	function	line:26
+title	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <title><\/title>$/;"	function	line:27
+body	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^<body id="bd">$/;"	function	line:30
+p	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <p class="p">STREET WORKOUT<\/p>$/;"	function	line:31
+iframe	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <iframe height=240 width=320 src='http:\/\/player.youku.com\/embed\/XMjY1NDQ2NTM0NA==' frameborder=0 'allowfullscreen'><\/iframe>$/;"	function	line:32
+div	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <div class="" id="tabbar">$/;"	function	line:33
+div	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^    <div class="" id="video">$/;"	function	line:36
+iframe	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^        <iframe height=107 width=140 src='http:\/\/player.youku.com\/embed\/XODY5MzA4NzA4' frameborder=0 'allowfullscreen'><\/iframe>$/;"	function	line:37
+iframe	/Users/seanconner/CodeArea/python/blog_project/templates/app.html	/^        <iframe height=107 width=140 src='http:\/\/player.youku.com\/embed\/XOTUxMDIzNTUy' frameborder=0 'allowfullscreen'><\/iframe>$/;"	function	line:38

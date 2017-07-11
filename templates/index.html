@@ -1,0 +1,129 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% load staticfiles %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 这里的sitename使用的就是view中定义的预处返回的变量 -->
+	<title>{{siteName}} - Home</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+	<script type="text/javascript" src= "{% static "js/jquery.js" %}"></script>
+
+	<script type="text/javascript">
+		function equalHeight(group) {
+			tallest = 0;
+			group.each(function() {
+				thisHeight = $(this).height();
+				if (thisHeight > tallest) {
+					tallest = thisHeight;
+				}
+			});
+			group.height(tallest);
+		}
+		$(document).ready(function() {
+			equalHeight($(".column"));
+		});
+	</script>
+
+
+</head>
+
+<body>
+	<div id="wrapper">
+
+
+		<div id="header">
+			<!-- Start Header -->
+
+			<a href="index.html"><img id="logo" src="{% static "img/logo.png" %}" alt="Captain&amp;Conner" /></a>
+
+			<span id="number">for that moment.</span>
+
+		</div>
+		<!-- End Header -->
+
+
+		<ul id="nav-home">
+			<!-- Navigation -->
+			<li><a href="">首頁</a></li>
+			<li><a href="logentry/">Log Entry</a></li>
+			<li><a href="blog/">blog</a></li>
+			<li><a href="about/">About</a></li>
+			<li><a href="contact/">留言</a></li>
+		</ul>
+
+		<div id="featured">
+
+			<img src="{% static "img/featured.jpeg" %}" alt="" />
+
+			<span>
+				To be a sailor of the world bound for all ports.
+			</span>
+		</div>
+
+		<div class="column" id="col1" >
+			<!-- Start Column 1 -->
+			{% if  latest_blog %}
+				<a href="blog/?id={{latest_blog.id}}"><h1>{{latest_blog.title}}</h1></a>
+				{% autoescape off %}
+					{{latest_blog.content}}
+				{% endautoescape %}
+			{% endif %}
+		</div>
+		<!-- End Column 1 -->
+
+
+		<div class="column" id="col2">
+			<!-- Start Column 2 -->
+
+			<h1>Loving&Things</h1>
+
+			<div class="service">
+				<!-- 这里以后链接上 自己的健身网页 -->
+				<img src="{% static "img/sports.jpg" %}" alt="" />
+				<p>Street Workout</p>
+			</div>
+
+			<div class="service">
+				<img src="{% static "img/coding.jpg" %}" alt="" />
+				<p>Coding</p>
+			</div>
+
+		</div>
+
+		<!-- End Column 2 -->
+
+		<div class="copyrights">Collects from
+			<a href="http://www.cssmoban.com/"></a>
+		</div>
+		<div class="column" id="sidebar">
+			<!-- Start Sidebar -->
+
+			<h1>News &amp; Events</h1>
+
+			<ul>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+				<li><a href="#">Aenean ultrices turpis. Mauris a nulla quis nisi interdum tempor</a></li>
+			</ul>
+
+		</div>
+		<!-- End Sidebar -->
+
+		<div id="footer">
+
+			<p>Copyright &copy; <b>Sean&amp;Conner</b> | <a href="http://blog.sina.com.cn/u/2325354970">SinaBolg</a></p>
+
+		</div><!-- End Footer -->
+
+
+	</div>
+	<!-- End Wrapper -->
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% load staticfiles %}
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Captain&amp;Conner - Contact</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+
+	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	function equalHeight(group) {
+	tallest = 0;
+	group.each(function() {
+	thisHeight = $(this).height();
+	if(thisHeight > tallest) {
+	tallest = thisHeight;
+	}
+	});
+	group.height(tallest);
+	}
+	$(document).ready(function() {
+	equalHeight($(".column"));
+	});
+	//]]>
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+
+		<div id="header"><!-- Start Header -->
+
+			<a href="index.html"><img id="logo" src="{% static "img/logo.png" %}" alt="Taylor&amp;Smith" name="logo" /></a>
+
+			<span id="number"></span>
+
+		</div><!-- End Header -->
+
+
+
+		<ul id="nav"><!-- Navigation -->
+
+			<li><a href="/">首頁</a></li>
+			<li><a href="/logentry/">Log Entry</a></li>
+			<li><a href="/blog/">blog</a></li>
+			<li><a href="/about/">About</a></li>
+			<li><a href="/contact/">留言</a></li>
+
+		</ul>
+
+
+
+		<div class="column" id="content"><!-- Start Content -->
+
+			<h1>Contact</h1>
+
+			<div id="contact-form">
+				<fieldset class="info_fieldset">
+
+					<div id="note"></div>
+
+					<div id="fields">
+						{% if not success%}
+						<form id="ajax-contact-form" action="/sendemail/" name="ajax-contact-form" method="post">
+							{% csrf_token %}
+							<p>name</p>
+							<input class="textbox" type="text" name="name" value="" /><br />
+
+							<p>email</p>
+							<input class="textbox" type="text" name="email" value="" /><br />
+
+							<p>subject</p>
+							<input class="textbox" type="text" name="subject" value="" /><br />
+
+							<p>comments</p>
+							<textarea class="textbox" name="comments" rows="5" cols="25"></textarea><br />
+
+							<input class="button" type="submit" name="submit" value="send" />
+						</form>
+						{% else %}
+							<p>发送成功!</p>
+						{% endif %}
+
+					</div>
+
+				</fieldset>
+			</div>
+
+		</div><!-- End Content -->
+
+
+
+		<div class="column" id="sidebar"><!-- Start Sidebar -->
+
+			<h2>Locations</h2>
+
+			<ul>
+				<li>
+				<strong>NY, USA - Headquarters</strong><br />
+				Tel: +232 99 28320938<br />
+				Fax: +232 99 28320939<br />
+				<a href="catain2conner@yahoo.com">ny@taylorandsmith.com</a>
+				<a href="">Location Map</a>
+				</li>
+
+				<li>
+					<strong>Dubai, UAE</strong><br />
+					Tel: +971 6 3729820<br />
+					<a href="mailto:dubai@taylorandsmith.com">dubai@taylorandsmith.com<br /></a>
+					<a href="">Location Map</a>
+				</li>
+
+				<li>
+					<strong>Sydney, AUS</strong><br />
+					+763 43 27832191<br />
+					<a href="mailto:sydney@taylorandsmith.com">sydney@taylorandsmith.com<br /></a>
+					<a href="">Location Map</a>
+				</li>
+
+			</ul>
+
+		</div><!-- End Sidebar -->
+
+
+		<div id="footer">
+
+			<p>Copyright &copy; <b>Sean&amp;Conner</b> | <a href="http://blog.sina.com.cn/u/2325354970">SinaBolg</a></p>
+
+		</div><!-- End Footer -->
+
+	</div><!-- End Wrapper -->
+</body>
+</html>

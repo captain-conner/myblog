@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Captain&amp;Conner - Blog</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+
+	<script type="text/javascript">
+	function equalHeight(group) {
+		tallest = 0;
+		group.each(function() {
+			thisHeight = $(this).height();
+			if(thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.height(tallest);
+	}
+	$(document).ready(function() {
+		equalHeight($(".column"));
+	});
+	</script>
+
+
+</head>
+
+<body>
+<div id="wrapper">
+
+
+	<div id="header"><!-- Start Header -->
+
+		<a href="index.html"><img id="logo" src="{% static "img/logo.png" %}" alt="Taylor&amp;Smith" /></a>
+
+		<span id="number"></span>
+
+	</div><!-- End Header -->
+
+	<ul id="nav"><!-- Navigation -->
+		<li><a href="/">首頁</a></li>
+		<li><a href="/logentry/">Log Entry</a></li>
+		<li><a href="/blog/">blog</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/contact/">留言</a></li>
+	</ul>
+
+	<div class="column" id="content"><!-- Start Content -->
+
+		<h1>Motto</h1>
+
+		<div class="textcolumn">
+
+			<p>To remind myself of what i’d be if i wasn’t who i am. <br> —Peaky Blinders</p>
+
+			<img class="img" src="{% static "img/Interstellar.jpg" %}" alt="Our first office" width="280px" />
+
+			<p> Do not go gentle into that good night,<br>Old age should burn and rave at close of day;<br>Rage, rage against the dying of the light.<br>Though wise men at their end know dark is right,<br>Because their words had forked no lightning they<br>Do not go gentle into that good night.<br>Good men, the last wave by, crying how bright<br>Their frail deeds might have danced in a green bay,<br>Rage, rage against the dying of the light.<br>Wild men who caught and sang the sun in flight,<br>And learn, too late, they grieved it on its way,<br>Do not go gentle into that good night.<br>Grave men, near death, who see with blinding sight<br>Blind eyes could blaze like meteors and be gay,<br>Rage, rage against the dying of the light.<br>And you, my father, there on the sad height,<br>Curse, bless me now with your fierce tears, I pray.<br>Do not go gentle into that good night.<br>Rage, rage against the dying of the light.<br>-Dylan Thomas</p>
+
+			<blockquote> 内容.</blockquote>
+
+
+			<p> 内容</p>
+
+		</div><!-- End TextColumns -->
+
+	</div><!-- End Content -->
+
+
+	<div class="column" id="sidebar"><!-- Start Sidebar -->
+
+		<h2>Company History</h2>
+		<ul>
+			<li><a href="#"><b>1990 - present</b><br /><i>It's just the start</i></a></li>
+			<li><a href="#"><b>1980 - 1989</b><br /><i>Taylor&amp;Smith makes history</i></a></li>
+			<li><a href="#"><b>1970 - 1979</b><br /><i>Early days</i></a></li>
+		</ul>
+
+		<h2>Locations</h2>
+		<ul>
+			<li>
+			<b>NY, USA - Headquarters</b><br />
+			Tel: +232 99 28320938<br />
+			Fax: +232 99 28320939<br />
+			<a href="mailto:ny@taylorandsmith.com">ny@taylorandsmith.com</a>
+			<a href="">Location Map</a>
+			</li>
+
+			<li>
+			<b>Dubai, UAE</b><br />
+			Tel: +971 6 3729820<br />
+			<a href="mailto:dubai@taylorandsmith.com">dubai@taylorandsmith.com</a><br />
+			<a href="">Location Map</a>
+			</li>
+
+			<li>
+			<b>Sydney, AUS</b><br />
+			+763 43 27832191<br />
+			<a href="mailto:sydney@taylorandsmith.com">sydney@taylorandsmith.com</a><br />
+			<a href="">Location Map</a>
+			</li>
+		</ul>
+
+	</div><!-- End Sidebar -->
+
+	<div id="footer">
+
+		<p>Copyright &copy; <b>Sean&amp;Conner</b> | <a href="http://blog.sina.com.cn/u/2325354970">SinaBolg</a></p>
+
+	</div><!-- End Footer -->
+
+
+</div><!-- End Wrapper -->
+</body>
+
+</html>

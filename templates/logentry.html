@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load staticfiles %}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Sean&amp;Conner - Blog</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+	<script type="text/javascript" src="{% static "js/jquery.js" %}"></script>
+
+	<script type="text/javascript">
+	function equalHeight(group) {
+		tallest = 0;
+		group.each(function() {
+			thisHeight = $(this).height();
+			if(thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.height(tallest);
+	}
+	$(document).ready(function() {
+		equalHeight($(".column"));
+	});
+	</script>
+
+
+</head>
+
+<body>
+<div id="wrapper">
+
+
+	<div id="header"><!-- Start Header -->
+
+		<a href="index.html"><img id="logo" src="{% static "img/logo.png" %}" alt="Taylor&amp;Smith" /></a>
+
+		<span id="number"></span>
+
+	</div><!-- End Header -->
+
+	<ul id="nav"><!-- Navigation -->
+		<li><a href="/">首頁</a></li>
+		<li><a href="/logentry/">Log Entry</a></li>
+		<li><a href="/blog/">blog</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/contact/">留言</a></li>
+	</ul>
+
+	<div class="column" id="content"><!-- Start Content -->
+
+		<h1>Log Entry</h1>
+		{%if articles %}
+			{% for s in articles %}
+				<a href="?id={{s.id}}"><h2>{{s.title}}</h2></a>
+				{% autoescape off %}
+						{{s.content}}
+				{% endautoescape %}
+				<br>
+				<i class="publish_time">{{s.date_publish|date:'Y-m-d'}}</i>
+				<hr style="height:1px;border:none;border-top:1px solid #555555;" />
+			{% endfor %}
+		{% endif %}
+	</div><!-- End Content -->
+
+
+	<div class="column" id="sidebar"><!-- Start Sidebar -->
+
+
+		<h2>Recently</h2>
+		<ul>
+			<li><a href="/logentry/">On Week<br /><i></i></a></li>
+			<li><a href="/logentry/?monthly=onemonth">On Month<br /><i></i></a></li>
+		</ul>
+
+		<h2>Archives</h2>
+		<ul>
+			<!-- 先要判断是否在归档的选项下 -->
+			{% for key,value in archives.items %}
+				<li>
+					<a href="?archive={{key}}">
+						{{key}}
+						{% if value > 0 %}
+							({{value}})
+						{% endif %}
+						<!-- 站到对应的展开选项 -->
+						{% ifequal key archives_year %}
+							<br>
+							<i>
+								<div class="selectdate">
+									<a href="/logentry/?archive={{archives_year}}&monthly=01"><button type="button" name="button">01</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=02"><button type="button" name="button">02</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=03"><button type="button" name="button">03</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=04"><button type="button" name="button">04</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=05"><button type="button" name="button">05</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=06"><button type="button" name="button">06</button></a>
+									<br>
+									<a href="/logentry/?archive={{archives_year}}&monthly=07"><button type="button" name="button">07</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=08"><button type="button" name="button">08</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=09"><button type="button" name="button">09</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=10"><button type="button" name="button">10</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=11"><button type="button" name="button">11</button></a>
+									<a href="/logentry/?archive={{archives_year}}&monthly=12"><button type="button" name="button">12</button></a>
+								</div>
+								<br>
+							</i>
+						{% endifequal %}
+					</a>
+				</li>
+			{% endfor %}
+
+
+		</ul>
+
+	</div><!-- End Sidebar -->
+
+
+	<!-- 分页的实现 -->
+	<div class="pagination">
+		<ul class="pagefilter">
+			<!--上一页 -->
+			{% if articles.has_previous %}
+				<li><a href="?page={{articles.previous_page_number}}&archive={{archives_date}}&cat={{cate}}" >上一页</a></li>
+			{% else %}
+				<li>上一页</li>
+			{% endif %}
+
+			<!-- 当前页面 -->
+			<li>{{articles.number}}/{{paginator.num_pages}}</li>
+			<!-- 下一页 -->
+			{% if articles.has_next %}
+			<!-- 这里可以设置page的信息用于get -->
+				<li><a href="?page={{articles.next_page_number}}&archive={{archives_date}}&cat={{cate}}" >下一页</a></li>
+			{% else %}
+				<li>下一页</li>
+			{% endif %}
+		</ul>
+	</div>
+
+	<div id="footer">
+
+		<p>Copyright &copy; <b>Sean&amp;Conner</b> | <a href="http://blog.sina.com.cn/u/2325354970">SinaBolg</a></p>
+
+	</div><!-- End Footer -->
+
+
+</div><!-- End Wrapper -->
+</body>
+
+</html>
